@@ -7,8 +7,10 @@ import matplotlib.pyplot as plt
 import torch
 import torch.optim as optim
 import torch.nn as nn
+from torch.utils.tensorboard import SummaryWriter
+from resnet50 import ResNet
+from resnet50 import ResNet50
 
-from Regressor.regressor_model import Oracle
 from Utils.regressor_utils  import DriveDataset
 from Utils.regressor_utils  import prepare_data
 from Utils.regressor_utils import Normalize
@@ -16,6 +18,7 @@ from Utils.regressor_utils import Normalize
 class Regressor:
     def __init__(self, args):
         self.args = args
+        self.writer = SummaryWriter()
         print("\n--------------------------------")
         print("Seed: ", self.args.seed)
 
@@ -98,7 +101,7 @@ class Regressor:
                 self.optimizer.step()
 
                 loss_np = loss.cpu().detach().numpy() #This gives a single number
-
+                self.writer.add_scalar("Regressor: Batch Loss/train", loss_np, bi) #train is recorded per batch
                 batch_loss +=loss_np
                 
             # Average Batch train loss per epoch (length of trainloader = number of batches?)
@@ -125,7 +128,8 @@ class Regressor:
         print("#### Ended Training ####")
         elapsed = (time.time() - start)
         print("Training Stats: \nTime: {} seconds".format(round(elapsed,2)))
-
+        self.writer.flush() 
+        self.writer.close()
         # Draw loss plot (both train and val)
         fig, ax = plt.subplots(figsize=(16,5), dpi = 100)
         xticks= np.arange(0,self.args.train_epochs,5)
@@ -147,7 +151,7 @@ class Regressor:
                 targets_batch = targets_batch.to(self.device)
                 outputs = current_model(inputs_batch)
                 loss = self.criterion(torch.squeeze(outputs), targets_batch)
-
+                self.writer.add_scalar("Regressor: Batch Loss/val", loss_np, bi)
                 loss_np =  loss.cpu().detach().numpy()
                 #loss_np = loss.item()
                 batch_val_loss +=loss_np
