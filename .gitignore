@@ -36,3 +36,6 @@ Data/valWaymo/*
 
 Data/labelsWaymo_train.csv
 Data/labelsWaymo_val.csv
+
+.ipynb_checkpoints/
+.ipynb_checkpoints/*

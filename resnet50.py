@@ -78,6 +78,9 @@ class ResNet(nn.Module):
         self.fc = nn.Linear(512 * 4, num_classes)
 
     def forward(self, x):
+        #x = Lambda(lambda x: x/127.5 - 1.0)(x)
+        x = x/127.5 - 1.0
+        #print("Before Conv 1:", x)
         x = self.conv1(x)
         x = self.bn1(x)
         x = self.relu(x)
