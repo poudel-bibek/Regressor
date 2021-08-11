@@ -63,6 +63,8 @@ class Regressor:
         print("\n--------------------------------")
         print("Total No. of Trainable Parameters: ",sum(p.numel() for p in self.net.parameters() if p.requires_grad))
 
+        # Print some hyper-parameters here
+
         self.criterion = nn.MSELoss() # reduction = "mean"
         self.optimizer = optim.Adam(self.net.parameters(), lr = self.args.lr)
 
@@ -126,7 +128,8 @@ class Regressor:
             val_loss_collector[i] = avg_batch_loss_val
 
             print("Val: ABL {}, Acc. {}%".format(round(avg_batch_loss_val,3), round(acc_val,2) ), end = "\t")
-            print("Time: {} s, LR: {}".format(round(time.time() - start, 1), self.optimizer.param_groups[0]['lr'] ))
+            print("Time: {} s".format(round(time.time() - start, 1) #LR: {}".format(round(time.time() - start, 1), self.optimizer.param_groups[0]['lr'] )) 
+            # There does not seem to be a way to get current LR of Adam
 
             if avg_batch_loss_val < best_loss:
 
@@ -141,7 +144,7 @@ class Regressor:
 
         # Draw loss plot (both train and val)
         fig, ax = plt.subplots(figsize=(16,5), dpi = 100)
-        xticks= np.arange(0,self.args.train_epochs,5)
+        xticks= np.arange(0,self.args.train_epochs,50)
 
         ax.set_ylabel("MSE Loss (Training & Validation)") 
         ax.plot(np.asarray(train_loss_collector))
