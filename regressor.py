@@ -115,18 +115,18 @@ class Regressor:
                 batch_loss_train +=loss_np
                 
             # Average Batch train loss per epoch (length of trainloader = number of batches?)
-            avg_batch_loss_train = round(batch_loss_train / len(self.train_dataloader),3)
+            avg_batch_loss_train = batch_loss_train / len(self.train_dataloader)
 
             # Get train accuracy here
             acc_train = self.mean_accuracy(ground_truths_train, predictions_train)
-            print("Train: ABL {}, Acc. {}%".format(avg_batch_loss_train, round(acc_train,2) ), end="\t")
+            print("Train: ABL {}, Acc. {}%".format(round(avg_batch_loss_train,3), round(acc_train,2) ), end="\t")
 
             # Val loss per epoch
             acc_val, avg_batch_loss_val = self.validate(self.net)
             val_loss_collector[i] = avg_batch_loss_val
 
-            print("Val: ABL {}, Acc. {}%".format(avg_batch_loss_val, round(acc_val,2) ), end = "\t")
-            print("Time: {} s".format(round(time.time() - start, 1)))
+            print("Val: ABL {}, Acc. {}%".format(round(avg_batch_loss_val,3), round(acc_val,2) ), end = "\t")
+            print("Time: {} s, LR: {}".format(round(time.time() - start, 1), self.optimizer.param_groups[0]['lr'] ))
 
             if avg_batch_loss_val < best_loss:
 
@@ -183,7 +183,7 @@ class Regressor:
 
 
         acc_val = self.mean_accuracy(ground_truths_val, predictions_val)
-        avg_batch_loss_val = round(batch_loss_val / len(self.val_dataloader),3)
+        avg_batch_loss_val = batch_loss_val / len(self.val_dataloader)
 
         return acc_val, avg_batch_loss_val
 
@@ -192,26 +192,18 @@ class Regressor:
         ground_truths = np.asarray(ground_truths)
         predictions = np.asarray(predictions).reshape(-1)
         error = 15.0*(ground_truths - predictions) # Accuracy is measured in steering angles
-
         # print("GTS,", ground_truths.shape)
         # print("PREDS,", predictions.shape)
         # print("ER", error.shape)
 
         # Error in 1.5,3,7,15,30,75
-        er_1 = np.asarray([ 1.0 if er <=1.5 else 0.0 for er in error]) 
-        er_2 = np.asarray([ 1.0 if er <=3.0 else 0.0 for er in error])
-        er_3 = np.asarray([ 1.0 if er <=7.5 else 0.0 for er in error]) 
-        er_4 = np.asarray([ 1.0 if er <=15.0 else 0.0 for er in error]) 
-        er_5 = np.asarray([ 1.0 if er <=30.0 else 0.0 for er in error])  
-        er_6 = np.asarray([ 1.0 if er <=75.0 else 0.0 for er in error]) 
-
         # count each and Mean
-        acc_1 = np.sum(er_1)/error.shape[0]
-        acc_2 = np.sum(er_2)/error.shape[0]
-        acc_3 = np.sum(er_3)/error.shape[0]
-        acc_4 = np.sum(er_4)/error.shape[0]
-        acc_5 = np.sum(er_5)/error.shape[0]
-        acc_6 = np.sum(er_6)/error.shape[0]
+        acc_1 = np.sum(np.asarray([ 1.0 if er <=1.5 else 0.0 for er in error]) )
+        acc_2 = np.sum(np.asarray([ 1.0 if er <=3.0 else 0.0 for er in error]))
+        acc_3 = np.sum(np.asarray([ 1.0 if er <=7.5 else 0.0 for er in error]) )
+        acc_4 = np.sum(np.asarray([ 1.0 if er <=15.0 else 0.0 for er in error]))
+        acc_5 = np.sum(np.asarray([ 1.0 if er <=30.0 else 0.0 for er in error]) )
+        acc_6 = np.sum(np.asarray([ 1.0 if er <=75.0 else 0.0 for er in error]) )
 
-        mean_acc = (acc_1 + acc_2 + acc_3 + acc_4 + acc_5 + acc_6)/6
-        return 100*mean_acc # In percentage
+        mean_acc = 100*(acc_1 + acc_2 + acc_3 + acc_4 + acc_5 + acc_6)/(error.shape[0]*6) # In percentage
+        return mean_acc 

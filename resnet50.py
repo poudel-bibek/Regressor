@@ -79,7 +79,7 @@ class ResNet(nn.Module):
 
     def forward(self, x):
         #x = Lambda(lambda x: x/127.5 - 1.0)(x)
-        x = x/127.5 - 1.0
+        x = x/127.5 - 1.0 # -1,1 range
         #print("Before Conv 1:", x)
         x = self.conv1(x)
         x = self.bn1(x)
