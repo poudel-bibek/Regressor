@@ -13,7 +13,8 @@ from resnet50 import ResNet50
 
 from Utils.regressor_utils  import DriveDataset
 from Utils.regressor_utils  import prepare_data
-from Utils.regressor_utils import Normalize
+# from Utils.regressor_utils import Normalize
+#from torch.optim.lr_scheduler import MultiStepLR # This is not reaally required for Adam
 
 class Regressor:
     def __init__(self, args):
@@ -32,8 +33,8 @@ class Regressor:
         print("Device Assigned to: ", self.device)
 
         # Constants + Hyperparams : Not set by terminal args
-        self.TRAIN_BATCH_SIZE = 32
-        self.VAL_BATCH_SIZE = 32
+        self.TRAIN_BATCH_SIZE = 128
+        self.VAL_BATCH_SIZE = 128
 
         print("Data Directory: ", self.args.train_data_dir)
         train_images, train_targets, val_images, val_targets = prepare_data(self.args.train_data_dir)
@@ -58,12 +59,14 @@ class Regressor:
         Normalize inside the model: Later when the RL agents wants decisions on images
         We dont have to worry about it, the saved model has it
         """
-        self.cnn_model = Oracle()
-        self.net = nn.Sequential(
-                    Normalize([87.3387902, 95.2747195, 107.87840699],
-                    [59.92092777, 65.32244491, 76.10364479],
-                    self.device),
-                    self.cnn_model).to(self.device)
+        self.cnn_model = ResNet50()
+        self.net = self.cnn_model.to(self.device)
+
+        # self.net = nn.Sequential(
+        #             Normalize([87.3387902, 95.2747195, 107.87840699],
+        #             [59.92092777, 65.32244491, 76.10364479],
+        #             self.device),
+        #             self.cnn_model).to(self.device)
         
         print("\n--------------------------------")
         print("Total No. of Trainable Parameters: ",sum(p.numel() for p in self.net.parameters() if p.requires_grad))

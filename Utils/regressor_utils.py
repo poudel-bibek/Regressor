@@ -4,7 +4,7 @@ from torch.utils.data import Dataset
 from torchvision import transforms
 #from torchvision.transforms.transforms import ToTensor 
 
-class DriveDataset(Dataset):
+class DriveDatasetTransform(Dataset):
     def __init__(self, images, targets, transformation):
         self.images_list = images
         self.target_list = targets
@@ -18,6 +18,19 @@ class DriveDataset(Dataset):
         # Correct datatype here
         return [image_idx.astype(np.float32), target_idx.astype(np.float32)]
  
+class DriveDataset(Dataset):
+    def __init__(self, images, targets):
+        self.images_list = images
+        self.target_list = targets
+        assert (len(self.images_list) == len(self.target_list))
+    def __len__(self):
+        return len(self.images_list)
+    def __getitem__(self, key):
+        image_idx = self.images_list[key]
+        target_idx = self.target_list[key]
+        # Correct datatype here
+        return [image_idx.astype(np.float32), target_idx.astype(np.float32)]
+
 class Normalize(nn.Module):
     # Use GPU for normalization (as suggested by NVIDIA paper)
     def __init__(self, mean, std, device):
@@ -36,13 +49,14 @@ class Normalize(nn.Module):
         return x
     
 def prepare_data(directory):
-    train_path = directory + "/new_train.npz"
-    val_path = directory + "/val.npz"
-    #val_path = directory + "/train.npz"
+    train_path = directory + "/train_honda.npz"
+    val_path = directory + "/val_honda.npz"
+
     print("Loading data....................")
     train = np.load(train_path)
     val = np.load(val_path)
     print(train['train_images'].shape)
+
     return train['train_images'], train['train_targets'], val['val_images'], val['val_targets'] 
 
     #one = train['train_images'][0:int(train['train_images'].shape[0]*0.8)]
