@@ -1,0 +1,11 @@
+Loading data....................
+(100000, 3, 66, 200)
+
+Loaded:
+Training: 100000 Images, 100000 Targets
+Validation: 10000 Images, 10000 Targets
+Each image has shape:(3, 66, 200)
+
+--------------------------------
+
+#### Started Training ####

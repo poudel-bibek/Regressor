@@ -1,6 +1,6 @@
 import time
+from datetime import datetime
 import random
-import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -13,8 +13,6 @@ from resnet50 import ResNet50
 
 from Utils.regressor_utils  import DriveDataset
 from Utils.regressor_utils  import prepare_data
-# from Utils.regressor_utils import Normalize
-#from torch.optim.lr_scheduler import MultiStepLR # This is not reaally required for Adam
 
 class Regressor:
     def __init__(self, args):
@@ -28,7 +26,7 @@ class Regressor:
         random.seed(self.args.seed)
         np.random.seed(self.args.seed)
         torch.manual_seed(self.args.seed)
-        
+
         ## Identify device and acknowledge
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         print("Device Assigned to: ", self.device)
@@ -43,23 +41,16 @@ class Regressor:
                                                                                                     train_targets.shape[0],
                                                                                                     val_images.shape[0],
                                                                                                     val_targets.shape[0]))
-        print("Each image has shape:{}".format(train_images.shape[-3:]))                                                                                       
+
+        print("Each image has shape:{}".format(train_images.shape[-3:]))  
+
         self.train_dataset = DriveDataset(train_images, train_targets)
         self.val_dataset = DriveDataset(val_images, val_targets)
 
-        """
-        Normalize inside the model: Later when the RL agents wants decisions on images
-        We dont have to worry about it, the saved model has it
-        """
         self.cnn_model = ResNet50()
         self.net = self.cnn_model.to(self.device)
 
-        # self.net = nn.Sequential(
-        #             Normalize([87.3387902, 95.2747195, 107.87840699],
-        #             [59.92092777, 65.32244491, 76.10364479],
-        #             self.device),
-        #             self.cnn_model).to(self.device)
-        
+
         print("\n--------------------------------")
         print("Total No. of Trainable Parameters: ",sum(p.numel() for p in self.net.parameters() if p.requires_grad))
 
@@ -128,7 +119,7 @@ class Regressor:
             val_loss_collector[i] = avg_batch_loss_val
 
             print("Val: ABL {}, Acc. {}%".format(round(avg_batch_loss_val,3), round(acc_val,2) ), end = "\t")
-            print("Time: {} s".format(round(time.time() - start, 1) #LR: {}".format(round(time.time() - start, 1), self.optimizer.param_groups[0]['lr'] )) 
+            print("Time: {} s".format(round(time.time() - start, 1))) #LR: {}".format(round(time.time() - start, 1), self.optimizer.param_groups[0]['lr'] )) 
             # There does not seem to be a way to get current LR of Adam
 
             if avg_batch_loss_val < best_loss:
@@ -201,12 +192,12 @@ class Regressor:
 
         # Error in 1.5,3,7,15,30,75
         # count each and Mean
-        acc_1 = np.sum(np.asarray([ 1.0 if er <=1.5 else 0.0 for er in error]) )
+        acc_1 = np.sum(np.asarray([ 1.0 if er <=1.5 else 0.0 for er in error]))
         acc_2 = np.sum(np.asarray([ 1.0 if er <=3.0 else 0.0 for er in error]))
-        acc_3 = np.sum(np.asarray([ 1.0 if er <=7.5 else 0.0 for er in error]) )
+        acc_3 = np.sum(np.asarray([ 1.0 if er <=7.5 else 0.0 for er in error]))
         acc_4 = np.sum(np.asarray([ 1.0 if er <=15.0 else 0.0 for er in error]))
-        acc_5 = np.sum(np.asarray([ 1.0 if er <=30.0 else 0.0 for er in error]) )
-        acc_6 = np.sum(np.asarray([ 1.0 if er <=75.0 else 0.0 for er in error]) )
+        acc_5 = np.sum(np.asarray([ 1.0 if er <=30.0 else 0.0 for er in error]))
+        acc_6 = np.sum(np.asarray([ 1.0 if er <=75.0 else 0.0 for er in error]))
 
-        mean_acc = 100*(acc_1 + acc_2 + acc_3 + acc_4 + acc_5 + acc_6)/(error.shape[0]*6) # In percentage
+        mean_acc = 100*((acc_1 + acc_2 + acc_3 + acc_4 + acc_5 + acc_6)/(error.shape[0]*6)) # In percentage
         return mean_acc 
