@@ -39,3 +39,6 @@ Data/labelsWaymo_val.csv
 
 .ipynb_checkpoints/
 .ipynb_checkpoints/*
+
+Data/augmented_train_honda.npz
+./Data/augmented_train_honda.npz

@@ -16,7 +16,7 @@ class DriveDataset(Dataset):
         return [image_idx.astype(np.float32), target_idx.astype(np.float32)]
     
 def prepare_data(directory):
-    train_path = directory + "/train_honda.npz"
+    train_path = directory + "/augmented_train_honda.npz"
     val_path = directory + "/val_honda.npz"
 
     print("Loading data....................")
