@@ -1,0 +1,232 @@
+--------------------------------
+Seed:  42
+Device Assigned to:  cuda
+Data Directory:  ./Data
+Loading data....................
+(232737, 3, 66, 200)
+
+Loaded:
+Training: 232737 Images, 232737 Targets
+Validation: 10000 Images, 10000 Targets
+Each image has shape:(3, 66, 200)
+
+--------------------------------
+Total No. of Trainable Parameters:  23510081
+
+#### Started Training ####
+/mnt/c/Users/iambi/Desktop/Regressor/env/lib/python3.8/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+Ep. 1/1000:     Train: ABL 11.43, Acc. 84.39%   Val: ABL 8.082, Acc. 88.42%     Time: 446.3 s
+#### New Model Saved #####
+Ep. 2/1000:     Train: ABL 10.714, Acc. 84.99%  Val: ABL 8.384, Acc. 90.51%     Time: 444.5 s
+Ep. 3/1000:     Train: ABL 10.622, Acc. 85.88%  Val: ABL 8.357, Acc. 86.32%     Time: 449.8 s
+Ep. 4/1000:     Train: ABL 10.552, Acc. 85.49%  Val: ABL 8.161, Acc. 87.28%     Time: 459.0 s
+Ep. 5/1000:     Train: ABL 10.495, Acc. 85.81%  Val: ABL 8.116, Acc. 91.99%     Time: 456.5 s
+Ep. 6/1000:     Train: ABL 10.078, Acc. 85.05%  Val: ABL 7.443, Acc. 81.52%     Time: 462.3 s
+#### New Model Saved #####
+Ep. 7/1000:     Train: ABL 9.335, Acc. 81.85%   Val: ABL 6.843, Acc. 90.44%     Time: 454.8 s
+#### New Model Saved #####
+Ep. 8/1000:     Train: ABL 8.146, Acc. 81.56%   Val: ABL 5.111, Acc. 75.04%     Time: 453.0 s
+#### New Model Saved #####
+Ep. 9/1000:     Train: ABL 6.476, Acc. 82.06%   Val: ABL 4.254, Acc. 92.38%     Time: 438.8 s
+#### New Model Saved #####
+Ep. 10/1000:    Train: ABL 5.344, Acc. 82.35%   Val: ABL 3.24, Acc. 77.22%      Time: 438.4 s
+#### New Model Saved #####
+Ep. 11/1000:    Train: ABL 4.435, Acc. 82.51%   Val: ABL 3.257, Acc. 85.73%     Time: 438.2 s
+Ep. 12/1000:    Train: ABL 3.681, Acc. 82.72%   Val: ABL 2.098, Acc. 88.38%     Time: 442.2 s
+#### New Model Saved #####
+Ep. 13/1000:    Train: ABL 3.026, Acc. 82.95%   Val: ABL 2.214, Acc. 85.1%      Time: 446.6 s
+Ep. 14/1000:    Train: ABL 2.555, Acc. 83.35%   Val: ABL 2.274, Acc. 85.43%     Time: 457.3 s
+Ep. 15/1000:    Train: ABL 2.248, Acc. 83.64%   Val: ABL 1.523, Acc. 85.06%     Time: 456.3 s
+#### New Model Saved #####
+Ep. 16/1000:    Train: ABL 1.998, Acc. 83.84%   Val: ABL 1.408, Acc. 85.79%     Time: 440.4 s
+#### New Model Saved #####
+Ep. 17/1000:    Train: ABL 1.539, Acc. 84.35%   Val: ABL 1.14, Acc. 84.63%      Time: 438.4 s
+#### New Model Saved #####
+Ep. 18/1000:    Train: ABL 1.602, Acc. 84.48%   Val: ABL 1.24, Acc. 86.94%      Time: 438.4 s
+Ep. 19/1000:    Train: ABL 1.337, Acc. 84.83%   Val: ABL 1.228, Acc. 87.67%     Time: 438.2 s
+Ep. 20/1000:    Train: ABL 1.165, Acc. 85.29%   Val: ABL 0.948, Acc. 82.52%     Time: 437.9 s
+#### New Model Saved #####
+Ep. 21/1000:    Train: ABL 1.186, Acc. 85.34%   Val: ABL 1.201, Acc. 88.58%     Time: 438.4 s
+Ep. 22/1000:    Train: ABL 0.973, Acc. 85.82%   Val: ABL 1.29, Acc. 86.82%      Time: 438.3 s
+Ep. 23/1000:    Train: ABL 1.033, Acc. 85.67%   Val: ABL 0.814, Acc. 90.25%     Time: 438.2 s
+#### New Model Saved #####
+Ep. 24/1000:    Train: ABL 0.668, Acc. 86.61%   Val: ABL 0.864, Acc. 88.0%      Time: 437.8 s
+Ep. 25/1000:    Train: ABL 0.944, Acc. 86.1%    Val: ABL 0.724, Acc. 89.31%     Time: 438.3 s
+#### New Model Saved #####
+Ep. 26/1000:    Train: ABL 0.723, Acc. 86.75%   Val: ABL 1.086, Acc. 85.93%     Time: 438.1 s
+Ep. 27/1000:    Train: ABL 0.739, Acc. 86.7%    Val: ABL 0.494, Acc. 88.59%     Time: 438.1 s
+#### New Model Saved #####
+Ep. 28/1000:    Train: ABL 0.554, Acc. 87.32%   Val: ABL 0.773, Acc. 89.25%     Time: 438.2 s
+Ep. 29/1000:    Train: ABL 0.754, Acc. 86.92%   Val: ABL 0.682, Acc. 87.92%     Time: 438.2 s
+Ep. 30/1000:    Train: ABL 0.568, Acc. 87.61%   Val: ABL 2.473, Acc. 88.47%     Time: 438.0 s
+Ep. 31/1000:    Train: ABL 0.624, Acc. 87.33%   Val: ABL 0.56, Acc. 91.6%       Time: 438.0 s
+Ep. 32/1000:    Train: ABL 0.439, Acc. 88.03%   Val: ABL 0.506, Acc. 93.01%     Time: 438.3 s
+Ep. 33/1000:    Train: ABL 0.533, Acc. 87.68%   Val: ABL 0.46, Acc. 86.97%      Time: 438.1 s
+#### New Model Saved #####
+Ep. 34/1000:    Train: ABL 0.435, Acc. 88.16%   Val: ABL 0.53, Acc. 88.8%       Time: 438.1 s
+Ep. 35/1000:    Train: ABL 0.514, Acc. 87.85%   Val: ABL 0.463, Acc. 88.84%     Time: 438.3 s
+Ep. 36/1000:    Train: ABL 0.302, Acc. 88.92%   Val: ABL 0.472, Acc. 91.2%      Time: 438.1 s
+Ep. 37/1000:    Train: ABL 0.492, Acc. 88.01%   Val: ABL 0.409, Acc. 91.29%     Time: 437.4 s
+#### New Model Saved #####
+Ep. 38/1000:    Train: ABL 0.288, Acc. 89.06%   Val: ABL 0.432, Acc. 91.22%     Time: 438.0 s
+Ep. 39/1000:    Train: ABL 0.483, Acc. 88.27%   Val: ABL 0.443, Acc. 87.5%      Time: 438.5 s
+Ep. 40/1000:    Train: ABL 0.265, Acc. 89.28%   Val: ABL 0.383, Acc. 91.22%     Time: 438.1 s
+#### New Model Saved #####
+Ep. 41/1000:    Train: ABL 0.3, Acc. 89.14%     Val: ABL 0.457, Acc. 92.42%     Time: 437.8 s
+Ep. 42/1000:    Train: ABL 0.32, Acc. 89.13%    Val: ABL 0.351, Acc. 90.54%     Time: 437.3 s
+#### New Model Saved #####
+Ep. 43/1000:    Train: ABL 0.483, Acc. 88.62%   Val: ABL 0.345, Acc. 89.0%      Time: 437.7 s
+#### New Model Saved #####
+Ep. 44/1000:    Train: ABL 0.284, Acc. 89.25%   Val: ABL 0.312, Acc. 89.96%     Time: 437.8 s
+#### New Model Saved #####
+Ep. 45/1000:    Train: ABL 0.188, Acc. 90.08%   Val: ABL 0.317, Acc. 90.0%      Time: 437.5 s
+Ep. 46/1000:    Train: ABL 0.41, Acc. 88.8%     Val: ABL 0.371, Acc. 91.34%     Time: 437.8 s
+Ep. 47/1000:    Train: ABL 0.221, Acc. 89.83%   Val: ABL 0.279, Acc. 91.06%     Time: 437.9 s
+#### New Model Saved #####
+Ep. 48/1000:    Train: ABL 0.343, Acc. 89.53%   Val: ABL 0.531, Acc. 90.88%     Time: 441.3 s
+Ep. 49/1000:    Train: ABL 0.249, Acc. 89.69%   Val: ABL 0.273, Acc. 90.71%     Time: 437.9 s
+#### New Model Saved #####
+Ep. 50/1000:    Train: ABL 0.154, Acc. 90.68%   Val: ABL 0.271, Acc. 92.32%     Time: 437.7 s
+#### New Model Saved #####
+Ep. 51/1000:    Train: ABL 0.27, Acc. 90.03%    Val: ABL 0.765, Acc. 88.42%     Time: 438.6 s
+Ep. 52/1000:    Train: ABL 0.356, Acc. 89.34%   Val: ABL 0.29, Acc. 90.72%      Time: 437.2 s
+Ep. 53/1000:    Train: ABL 0.234, Acc. 90.26%   Val: ABL 0.876, Acc. 89.74%     Time: 437.8 s
+Ep. 54/1000:    Train: ABL 0.208, Acc. 90.19%   Val: ABL 0.258, Acc. 92.71%     Time: 437.6 s
+#### New Model Saved #####
+Ep. 55/1000:    Train: ABL 0.226, Acc. 90.46%   Val: ABL 0.348, Acc. 90.92%     Time: 437.6 s
+Ep. 56/1000:    Train: ABL 0.253, Acc. 90.13%   Val: ABL 0.375, Acc. 92.72%     Time: 438.5 s
+Ep. 57/1000:    Train: ABL 0.171, Acc. 90.64%   Val: ABL 0.284, Acc. 92.46%     Time: 438.3 s
+Ep. 58/1000:    Train: ABL 0.139, Acc. 91.14%   Val: ABL 0.293, Acc. 91.73%     Time: 438.1 s
+Ep. 59/1000:    Train: ABL 0.283, Acc. 90.2%    Val: ABL 0.447, Acc. 90.32%     Time: 438.1 s
+Ep. 60/1000:    Train: ABL 0.188, Acc. 90.46%   Val: ABL 0.279, Acc. 93.23%     Time: 437.9 s
+Ep. 61/1000:    Train: ABL 0.114, Acc. 91.48%   Val: ABL 0.344, Acc. 92.03%     Time: 438.3 s
+Ep. 62/1000:    Train: ABL 0.162, Acc. 91.03%   Val: ABL 0.272, Acc. 91.64%     Time: 437.8 s
+Ep. 63/1000:    Train: ABL 0.139, Acc. 91.36%   Val: ABL 0.319, Acc. 93.47%     Time: 438.1 s
+Ep. 64/1000:    Train: ABL 0.168, Acc. 91.13%   Val: ABL 0.385, Acc. 91.72%     Time: 437.8 s
+Ep. 65/1000:    Train: ABL 0.26, Acc. 90.18%    Val: ABL 0.313, Acc. 91.57%     Time: 437.7 s
+Ep. 66/1000:    Train: ABL 0.223, Acc. 90.71%   Val: ABL 0.319, Acc. 91.39%     Time: 437.5 s
+Ep. 67/1000:    Train: ABL 0.104, Acc. 91.69%   Val: ABL 0.26, Acc. 93.45%      Time: 438.0 s
+Ep. 68/1000:    Train: ABL 0.095, Acc. 92.09%   Val: ABL 0.293, Acc. 92.66%     Time: 437.5 s
+Ep. 69/1000:    Train: ABL 0.129, Acc. 91.6%    Val: ABL 0.262, Acc. 93.26%     Time: 437.9 s
+Ep. 70/1000:    Train: ABL 0.268, Acc. 90.64%   Val: ABL 0.279, Acc. 91.49%     Time: 438.1 s
+Ep. 71/1000:    Train: ABL 0.096, Acc. 92.01%   Val: ABL 0.242, Acc. 94.15%     Time: 438.0 s
+#### New Model Saved #####
+Ep. 72/1000:    Train: ABL 0.162, Acc. 91.39%   Val: ABL 0.301, Acc. 92.52%     Time: 438.2 s
+Ep. 73/1000:    Train: ABL 0.082, Acc. 92.39%   Val: ABL 0.243, Acc. 94.31%     Time: 440.0 s
+Ep. 74/1000:    Train: ABL 0.096, Acc. 92.33%   Val: ABL 0.251, Acc. 91.7%      Time: 446.3 s
+Ep. 75/1000:    Train: ABL 0.205, Acc. 91.05%   Val: ABL 0.325, Acc. 93.21%     Time: 454.3 s
+Ep. 76/1000:    Train: ABL 0.144, Acc. 91.66%   Val: ABL 0.258, Acc. 92.66%     Time: 452.2 s
+Ep. 77/1000:    Train: ABL 0.077, Acc. 92.61%   Val: ABL 0.238, Acc. 91.97%     Time: 454.6 s
+#### New Model Saved #####
+Ep. 78/1000:    Train: ABL 0.202, Acc. 90.98%   Val: ABL 0.257, Acc. 93.89%     Time: 447.6 s
+Ep. 79/1000:    Train: ABL 0.082, Acc. 92.54%   Val: ABL 0.234, Acc. 92.96%     Time: 454.0 s
+#### New Model Saved #####
+Ep. 80/1000:    Train: ABL 0.09, Acc. 92.6%     Val: ABL 0.27, Acc. 89.47%      Time: 452.4 s
+Ep. 81/1000:    Train: ABL 0.182, Acc. 91.62%   Val: ABL 0.383, Acc. 90.96%     Time: 458.2 s
+Ep. 82/1000:    Train: ABL 0.105, Acc. 92.09%   Val: ABL 0.215, Acc. 93.22%     Time: 460.2 s
+#### New Model Saved #####
+Ep. 83/1000:    Train: ABL 0.067, Acc. 93.03%   Val: ABL 0.212, Acc. 93.93%     Time: 453.4 s
+#### New Model Saved #####
+Ep. 84/1000:    Train: ABL 0.09, Acc. 92.69%    Val: ABL 0.268, Acc. 93.93%     Time: 448.0 s
+Ep. 85/1000:    Train: ABL 0.183, Acc. 92.09%   Val: ABL 0.878, Acc. 91.52%     Time: 451.2 s
+Ep. 86/1000:    Train: ABL 0.167, Acc. 91.37%   Val: ABL 0.297, Acc. 92.79%     Time: 439.2 s
+Ep. 87/1000:    Train: ABL 0.066, Acc. 93.02%   Val: ABL 0.31, Acc. 92.86%      Time: 438.2 s
+Ep. 88/1000:    Train: ABL 0.065, Acc. 93.25%   Val: ABL 0.244, Acc. 94.18%     Time: 438.6 s
+Ep. 89/1000:    Train: ABL 0.088, Acc. 92.91%   Val: ABL 0.302, Acc. 93.29%     Time: 439.3 s
+Ep. 90/1000:    Train: ABL 0.24, Acc. 91.19%    Val: ABL 0.308, Acc. 92.67%     Time: 439.0 s
+Ep. 91/1000:    Train: ABL 0.079, Acc. 92.68%   Val: ABL 0.255, Acc. 94.28%     Time: 438.9 s
+Ep. 92/1000:    Train: ABL 0.054, Acc. 93.5%    Val: ABL 0.255, Acc. 93.05%     Time: 442.2 s
+Ep. 93/1000:    Train: ABL 0.064, Acc. 93.42%   Val: ABL 0.237, Acc. 93.64%     Time: 449.5 s
+Ep. 94/1000:    Train: ABL 0.08, Acc. 93.09%    Val: ABL 0.246, Acc. 94.23%     Time: 449.9 s
+Ep. 95/1000:    Train: ABL 0.089, Acc. 93.02%   Val: ABL 0.309, Acc. 94.54%     Time: 440.9 s
+Ep. 96/1000:    Train: ABL 0.073, Acc. 93.26%   Val: ABL 0.282, Acc. 92.33%     Time: 441.2 s
+Ep. 97/1000:    Train: ABL 0.061, Acc. 93.67%   Val: ABL 0.286, Acc. 95.52%     Time: 440.8 s
+Ep. 98/1000:    Train: ABL 0.12, Acc. 92.29%    Val: ABL 0.242, Acc. 94.05%     Time: 441.0 s
+Ep. 99/1000:    Train: ABL 0.053, Acc. 93.86%   Val: ABL 0.234, Acc. 94.76%     Time: 443.9 s
+Ep. 100/1000:   Train: ABL 0.09, Acc. 93.27%    Val: ABL 0.307, Acc. 90.29%     Time: 455.1 s
+Ep. 101/1000:   Train: ABL 0.115, Acc. 92.68%   Val: ABL 0.199, Acc. 94.03%     Time: 448.0 s
+#### New Model Saved #####
+Ep. 102/1000:   Train: ABL 0.045, Acc. 94.13%   Val: ABL 0.228, Acc. 93.98%     Time: 443.2 s
+Ep. 103/1000:   Train: ABL 0.146, Acc. 92.78%   Val: ABL 0.211, Acc. 94.23%     Time: 442.8 s
+Ep. 104/1000:   Train: ABL 0.049, Acc. 94.02%   Val: ABL 0.245, Acc. 94.02%     Time: 443.0 s
+Ep. 105/1000:   Train: ABL 0.057, Acc. 93.93%   Val: ABL 0.267, Acc. 93.65%     Time: 443.1 s
+Ep. 106/1000:   Train: ABL 0.057, Acc. 93.89%   Val: ABL 0.297, Acc. 93.16%     Time: 442.6 s
+Ep. 107/1000:   Train: ABL 0.195, Acc. 91.62%   Val: ABL 0.28, Acc. 92.85%      Time: 443.2 s
+Ep. 108/1000:   Train: ABL 0.057, Acc. 93.63%   Val: ABL 0.23, Acc. 93.54%      Time: 442.8 s
+Ep. 109/1000:   Train: ABL 0.04, Acc. 94.36%    Val: ABL 0.222, Acc. 94.94%     Time: 441.6 s
+Ep. 110/1000:   Train: ABL 0.056, Acc. 94.03%   Val: ABL 0.179, Acc. 95.29%     Time: 440.2 s
+#### New Model Saved #####
+Ep. 111/1000:   Train: ABL 0.106, Acc. 92.95%   Val: ABL 0.292, Acc. 92.11%     Time: 439.5 s
+Ep. 112/1000:   Train: ABL 0.056, Acc. 94.09%   Val: ABL 0.393, Acc. 94.07%     Time: 439.7 s
+Ep. 113/1000:   Train: ABL 0.055, Acc. 94.08%   Val: ABL 0.24, Acc. 94.26%      Time: 439.0 s
+Ep. 114/1000:   Train: ABL 0.077, Acc. 93.74%   Val: ABL 0.311, Acc. 90.2%      Time: 439.3 s
+Ep. 115/1000:   Train: ABL 0.125, Acc. 92.66%   Val: ABL 0.2, Acc. 93.16%       Time: 439.2 s
+Ep. 116/1000:   Train: ABL 0.042, Acc. 94.36%   Val: ABL 0.195, Acc. 94.63%     Time: 439.5 s
+Ep. 117/1000:   Train: ABL 0.043, Acc. 94.5%    Val: ABL 0.224, Acc. 95.56%     Time: 439.7 s
+Ep. 118/1000:   Train: ABL 0.127, Acc. 92.7%    Val: ABL 0.166, Acc. 94.8%      Time: 440.4 s
+#### New Model Saved #####
+Ep. 119/1000:   Train: ABL 0.041, Acc. 94.41%   Val: ABL 0.152, Acc. 94.96%     Time: 438.6 s
+#### New Model Saved #####
+Ep. 120/1000:   Train: ABL 0.046, Acc. 94.57%   Val: ABL 0.187, Acc. 94.7%      Time: 437.8 s
+Ep. 121/1000:   Train: ABL 0.048, Acc. 94.47%   Val: ABL 0.2, Acc. 95.63%       Time: 438.5 s
+Ep. 122/1000:   Train: ABL 0.061, Acc. 94.13%   Val: ABL 0.19, Acc. 95.04%      Time: 438.7 s
+Ep. 123/1000:   Train: ABL 0.102, Acc. 93.42%   Val: ABL 0.199, Acc. 93.1%      Time: 438.9 s
+Ep. 124/1000:   Train: ABL 0.07, Acc. 93.59%    Val: ABL 0.206, Acc. 93.27%     Time: 438.8 s
+Ep. 125/1000:   Train: ABL 0.039, Acc. 94.59%   Val: ABL 0.195, Acc. 94.22%     Time: 438.1 s
+Ep. 126/1000:   Train: ABL 0.038, Acc. 94.87%   Val: ABL 0.159, Acc. 93.65%     Time: 438.6 s
+Ep. 127/1000:   Train: ABL 0.045, Acc. 94.75%   Val: ABL 0.168, Acc. 95.3%      Time: 439.5 s
+Ep. 128/1000:   Train: ABL 0.054, Acc. 94.45%   Val: ABL 0.291, Acc. 94.33%     Time: 438.6 s
+Ep. 129/1000:   Train: ABL 0.07, Acc. 93.96%    Val: ABL 0.231, Acc. 94.21%     Time: 438.6 s
+Ep. 130/1000:   Train: ABL 0.038, Acc. 94.98%   Val: ABL 0.212, Acc. 94.45%     Time: 439.0 s
+Ep. 131/1000:   Train: ABL 0.041, Acc. 94.93%   Val: ABL 0.177, Acc. 94.64%     Time: 439.1 s
+Ep. 132/1000:   Train: ABL 0.075, Acc. 93.95%   Val: ABL 0.158, Acc. 94.64%     Time: 438.5 s
+Ep. 133/1000:   Train: ABL 0.04, Acc. 95.11%    Val: ABL 0.244, Acc. 94.67%     Time: 438.4 s
+Ep. 134/1000:   Train: ABL 0.037, Acc. 95.03%   Val: ABL 0.167, Acc. 95.03%     Time: 438.8 s
+Ep. 135/1000:   Train: ABL 0.035, Acc. 95.31%   Val: ABL 0.209, Acc. 95.8%      Time: 438.6 s
+Ep. 136/1000:   Train: ABL 0.046, Acc. 94.97%   Val: ABL 0.211, Acc. 96.21%     Time: 438.9 s
+Ep. 137/1000:   Train: ABL 0.045, Acc. 94.95%   Val: ABL 0.208, Acc. 92.85%     Time: 438.8 s
+Ep. 138/1000:   Train: ABL 0.129, Acc. 93.25%   Val: ABL 0.168, Acc. 94.9%      Time: 438.2 s
+Ep. 139/1000:   Train: ABL 0.035, Acc. 94.91%   Val: ABL 0.161, Acc. 94.95%     Time: 438.6 s
+Ep. 140/1000:   Train: ABL 0.026, Acc. 95.58%   Val: ABL 0.151, Acc. 95.73%     Time: 438.6 s
+#### New Model Saved #####
+Ep. 141/1000:   Train: ABL 0.032, Acc. 95.47%   Val: ABL 0.17, Acc. 96.26%      Time: 443.9 s
+Ep. 142/1000:   Train: ABL 0.112, Acc. 94.11%   Val: ABL 0.472, Acc. 91.58%     Time: 443.6 s
+Ep. 143/1000:   Train: ABL 0.087, Acc. 93.58%   Val: ABL 0.2, Acc. 94.99%       Time: 443.5 s
+Ep. 144/1000:   Train: ABL 0.029, Acc. 95.25%   Val: ABL 0.195, Acc. 94.22%     Time: 443.7 s
+Ep. 145/1000:   Train: ABL 0.028, Acc. 95.61%   Val: ABL 0.197, Acc. 94.68%     Time: 443.4 s
+Ep. 146/1000:   Train: ABL 0.036, Acc. 95.33%   Val: ABL 0.19, Acc. 93.98%      Time: 443.9 s
+Ep. 147/1000:   Train: ABL 0.09, Acc. 93.95%    Val: ABL 0.192, Acc. 94.63%     Time: 443.4 s
+Ep. 148/1000:   Train: ABL 0.031, Acc. 95.37%   Val: ABL 0.165, Acc. 95.27%     Time: 441.5 s
+Ep. 149/1000:   Train: ABL 0.025, Acc. 95.86%   Val: ABL 0.199, Acc. 96.04%     Time: 441.3 s
+Ep. 150/1000:   Train: ABL 0.038, Acc. 95.36%   Val: ABL 0.184, Acc. 93.06%     Time: 438.8 s
+Ep. 151/1000:   Train: ABL 0.047, Acc. 95.07%   Val: ABL 0.15, Acc. 95.37%      Time: 439.4 s
+#### New Model Saved #####
+Ep. 152/1000:   Train: ABL 0.033, Acc. 95.55%   Val: ABL 0.2, Acc. 93.62%       Time: 439.1 s
+Ep. 153/1000:   Train: ABL 0.035, Acc. 95.64%   Val: ABL 0.212, Acc. 94.23%     Time: 439.1 s
+Ep. 154/1000:   Train: ABL 0.036, Acc. 95.47%   Val: ABL 0.183, Acc. 94.7%      Time: 439.1 s
+Ep. 155/1000:   Train: ABL 0.031, Acc. 95.82%   Val: ABL 0.179, Acc. 95.46%     Time: 439.2 s
+Ep. 156/1000:   Train: ABL 0.035, Acc. 95.55%   Val: ABL 0.216, Acc. 94.9%      Time: 438.8 s
+Ep. 157/1000:   Train: ABL 0.033, Acc. 95.71%   Val: ABL 0.167, Acc. 94.9%      Time: 438.6 s
+Ep. 158/1000:   Train: ABL 0.036, Acc. 95.68%   Val: ABL 0.175, Acc. 95.04%     Time: 439.0 s
+Ep. 159/1000:   Train: ABL 0.03, Acc. 95.92%    Val: ABL 0.242, Acc. 94.63%     Time: 438.9 s
+Ep. 160/1000:   Train: ABL 0.033, Acc. 95.66%   Val: ABL 0.183, Acc. 95.07%     Time: 439.0 s
+Ep. 161/1000:   Train: ABL 0.036, Acc. 95.75%   Val: ABL 0.18, Acc. 95.19%      Time: 439.3 s
+Ep. 162/1000:   Train: ABL 0.037, Acc. 95.58%   Val: ABL 0.185, Acc. 94.94%     Time: 438.6 s
+Ep. 163/1000:   Train: ABL 0.022, Acc. 96.33%   Val: ABL 0.172, Acc. 95.92%     Time: 438.8 s
+Ep. 164/1000:   Train: ABL 0.03, Acc. 96.0%     Val: ABL 0.229, Acc. 94.11%     Time: 438.9 s
+Ep. 165/1000:   Train: ABL 0.029, Acc. 95.95%   Val: ABL 0.197, Acc. 95.55%     Time: 438.9 s
+Ep. 166/1000:   Train: ABL 0.033, Acc. 95.85%   Val: ABL 0.185, Acc. 93.84%     Time: 438.6 s
+Ep. 167/1000:   Train: ABL 0.024, Acc. 96.35%   Val: ABL 0.207, Acc. 95.14%     Time: 438.9 s
+Ep. 168/1000:   Train: ABL 0.036, Acc. 95.61%   Val: ABL 0.19, Acc. 94.44%      Time: 438.9 s
+Ep. 169/1000:   Train: ABL 0.032, Acc. 95.85%   Val: ABL 0.211, Acc. 95.81%     Time: 438.9 s
+Ep. 170/1000:   Train: ABL 0.032, Acc. 96.07%   Val: ABL 0.177, Acc. 96.19%     Time: 438.8 s
+Ep. 171/1000:   Train: ABL 0.075, Acc. 94.66%   Val: ABL 0.202, Acc. 94.63%     Time: 442.7 s
+Ep. 172/1000:   Train: ABL 0.027, Acc. 95.71%   Val: ABL 0.192, Acc. 95.05%     Time: 441.6 s
+Ep. 173/1000:   Train: ABL 0.018, Acc. 96.51%   Val: ABL 0.186, Acc. 94.84%     Time: 442.2 s
+Ep. 174/1000:   Train: ABL 0.019, Acc. 96.6%    Val: ABL 0.205, Acc. 95.66%     Time: 440.2 s
+Ep. 175/1000:   Train: ABL 0.034, Acc. 95.94%   Val: ABL 0.178, Acc. 96.38%     Time: 438.6 s
+Ep. 176/1000:   Train: ABL 0.026, Acc. 96.31%   Val: ABL 0.213, Acc. 95.18%     Time: 438.5 s
+Ep. 177/1000:   Train: ABL 0.053, Acc. 95.08%   Val: ABL 0.223, Acc. 95.09%     Time: 438.7 s
+Ep. 178/1000:   Train: ABL 0.023, Acc. 96.19%   Val: ABL 0.2, Acc. 95.78%       Time: 438.3 s
+Ep. 179/1000:   Train: ABL 0.017, Acc. 96.74%   Val: ABL 0.193, Acc. 95.52%     Time: 440.3 s
