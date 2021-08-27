@@ -39,3 +39,10 @@ Data/labelsWaymo_val.csv
 
 .ipynb_checkpoints/
 .ipynb_checkpoints/*
+
+./Saved_models/regressor.pt
+./Saved_models/*
+Saved_models/regressor.pt
+
+./Data/augmented_train_honda.npz
+Data/augmented_train_honda.npz

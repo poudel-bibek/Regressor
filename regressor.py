@@ -65,7 +65,11 @@ class Regressor:
         val_loss_collector = np.zeros(self.args.train_epochs)
 
         best_loss = float('inf')
+        logfile = open('./logs/logfile.txt', 'w')
+
         print("\n#### Started Training ####")
+        logfile.write("\n#### Started Training ####\n")
+
         for i in range(self.args.train_epochs):
             self.train_dataloader = torch.utils.data.DataLoader(dataset=self.train_dataset,
                                                     batch_size=self.TRAIN_BATCH_SIZE,
@@ -78,11 +82,19 @@ class Regressor:
                                                     shuffle=True)
 
             self.net.train()
+            if i==0:
+                myfile = open('model_init_weights.txt', 'w')
+                myfile.write("SEED = %s\n" % self.args.seed)
+                print("Writing Model Initial Weights to a file\n")
+                for param in self.net.parameters():
+                    myfile.write("%s\n" % param.data)
+                myfile.close()
+
             start = time.time()
 
             batch_loss_train = 0
             print("Ep. {}/{}:".format(i+1, self.args.train_epochs), end="\t")
-
+            logfile.write("Ep. {}/{}:\t".format(i+1, self.args.train_epochs))
             ground_truths_train =[]
             predictions_train =[]
 
@@ -113,23 +125,28 @@ class Regressor:
             # Get train accuracy here
             acc_train = self.mean_accuracy(ground_truths_train, predictions_train)
             print("Train: ABL {}, Acc. {}%".format(round(avg_batch_loss_train,3), round(acc_train,2) ), end="\t")
+            logfile.write("Train: ABL {}, Acc. {}%\t".format(round(avg_batch_loss_train,3), round(acc_train,2)))
 
             # Val loss per epoch
-            acc_val, avg_batch_loss_val = self.validate(self.net)
+            acc_val, avg_batch_loss_val,mae, mse = self.validate(self.net)
             val_loss_collector[i] = avg_batch_loss_val
 
-            print("Val: ABL {}, Acc. {}%".format(round(avg_batch_loss_val,3), round(acc_val,2) ), end = "\t")
+            print("Val: ABL {}, Acc. {}%, MAE {}, MSE {}".format(round(avg_batch_loss_val,3), round(acc_val,2), round(mae,3), round(mse,3)), end = "\t")
+            logfile.write("Val: ABL {}, Acc. {}%, MAE {}, MSE {}\n".format(round(avg_batch_loss_val,3), round(acc_val,2), round(mae,3), round(mse,3)))
+
             print("Time: {} s".format(round(time.time() - start, 1))) #LR: {}".format(round(time.time() - start, 1), self.optimizer.param_groups[0]['lr'] )) 
+            logfile.write("Time: {} s".format(round(time.time() - start, 1)))
             # There does not seem to be a way to get current LR of Adam
 
             if avg_batch_loss_val < best_loss:
 
                 best_loss = avg_batch_loss_val
                 print("#### New Model Saved #####")
+                logfile.write("#### New Model Saved #####\n")
                 torch.save(self.net, './Saved_models/regressor.pt')
 
             train_loss_collector[i] = avg_batch_loss_train
-            
+
         self.writer.flush() 
         self.writer.close()
 
@@ -143,10 +160,11 @@ class Regressor:
 
         ax.set_xticks(xticks) #;
         ax.legend(["Validation", "Training"])
-        fig.savefig('./Regressor/training_result.png')
+        fig.savefig('./training_result.png')
 
         print("#### Ended Training ####")
-
+        logfile.write("#### Ended Training ####")
+        logfile.close()
         # Plot AMA as well
 
     def validate(self, current_model):
@@ -177,9 +195,10 @@ class Regressor:
 
 
         acc_val = self.mean_accuracy(ground_truths_val, predictions_val)
+        mae, mse = self.mae_and_mse(ground_truths_val, predictions_val)
         avg_batch_loss_val = batch_loss_val / len(self.val_dataloader)
 
-        return acc_val, avg_batch_loss_val
+        return acc_val, avg_batch_loss_val, mae, mse
 
     def mean_accuracy(self, ground_truths, predictions):
 
@@ -201,3 +220,22 @@ class Regressor:
 
         mean_acc = 100*((acc_1 + acc_2 + acc_3 + acc_4 + acc_5 + acc_6)/(error.shape[0]*6)) # In percentage
         return mean_acc 
+
+    def mae_and_mse(self, ground_truths, predictions):
+       # MAE and MSE are measured in Rotation Angles, Same as loss
+        ground_truths = np.asarray(ground_truths)
+        predictions = np.asarray(predictions).reshape(-1)
+        error = ground_truths - predictions
+        #print("Error:",error)
+        #print("Error:",error.shape[0])
+
+        mae= np.sum(np.abs(error))/ error.shape[0]
+        #print("MAE:",np.abs(error))
+        #print("MAE:",np.sum(np.abs(error))) 
+
+        mse= np.sum(np.square(error))/error.shape[0]
+        #print("MSE:",np.square(error))
+        #print("MSE:",np.sum(np.square(error)))
+        return mae,mse
+# Loss here is measured in training set
+# We need MSE, MAE and MA in validation set
