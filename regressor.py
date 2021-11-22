@@ -10,6 +10,7 @@ import torch.nn as nn
 from torch.utils.tensorboard import SummaryWriter
 from resnet50 import ResNet
 from resnet50 import ResNet50
+from tqdm import tqdm
 
 from Utils.regressor_utils  import DriveDataset
 from Utils.regressor_utils  import prepare_data
@@ -47,9 +48,11 @@ class Regressor:
         self.train_dataset = DriveDataset(train_images, train_targets)
         self.val_dataset = DriveDataset(val_images, val_targets)
 
-        self.cnn_model = ResNet50()
-        self.net = self.cnn_model.to(self.device)
+        self.net = ResNet50()
+        # self.net = self.cnn_model.to(self.device)
 
+        # self.net.load_state_dict(torch.load('Saved_models/model-final.pth'))
+        self.net = self.net.to(self.device)
 
         print("\n--------------------------------")
         print("Total No. of Trainable Parameters: ",sum(p.numel() for p in self.net.parameters() if p.requires_grad))
@@ -74,16 +77,20 @@ class Regressor:
             self.train_dataloader = torch.utils.data.DataLoader(dataset=self.train_dataset,
                                                     batch_size=self.TRAIN_BATCH_SIZE,
                                                     collate_fn=None,
-                                                    shuffle=True)
+                                                    shuffle=True,
+                                                    prefetch_factor=8,
+                                                    num_workers=8)
 
             self.val_dataloader = torch.utils.data.DataLoader(dataset=self.val_dataset,
                                                     batch_size=self.VAL_BATCH_SIZE,
                                                     collate_fn=None,
-                                                    shuffle=True)
+                                                    shuffle=True,
+                                                    prefetch_factor=8,
+                                                    num_workers=8)
 
             self.net.train()
             if i==0:
-                myfile = open('model_init_weights.txt', 'w')
+                myfile = open('./logs/model_init_weights.txt', 'w')
                 myfile.write("SEED = %s\n" % self.args.seed)
                 print("Writing Model Initial Weights to a file\n")
                 for param in self.net.parameters():
@@ -98,7 +105,7 @@ class Regressor:
             ground_truths_train =[]
             predictions_train =[]
 
-            for bi, data in enumerate(self.train_dataloader):
+            for bi, data in enumerate(tqdm(self.train_dataloader)):
 
                 inputs_batch, targets_batch = data 
                 ground_truths_train.extend(targets_batch.numpy())
@@ -143,7 +150,12 @@ class Regressor:
                 best_loss = avg_batch_loss_val
                 print("#### New Model Saved #####")
                 logfile.write("#### New Model Saved #####\n")
-                torch.save(self.net, './Saved_models/regressor.pt')
+                torch.save(self.net, './Saved_models/regressor_best.pt')
+            
+            if i % 5 == 0:
+                print("Saving Routine Model")
+                logfile.write("Saving Routine Model")
+                torch.save(self.net, f"./Saved_models/regressor_{i}.pt")
 
             train_loss_collector[i] = avg_batch_loss_train
 
@@ -160,7 +172,7 @@ class Regressor:
 
         ax.set_xticks(xticks) #;
         ax.legend(["Validation", "Training"])
-        fig.savefig('./training_result.png')
+        fig.savefig('./logs/training_result.png')
 
         print("#### Ended Training ####")
         logfile.write("#### Ended Training ####")

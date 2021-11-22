@@ -46,3 +46,6 @@ Saved_models/regressor.pt
 
 ./Data/augmented_train_honda.npz
 Data/augmented_train_honda.npz
+
+Data/train.npz
+Data/val.npz

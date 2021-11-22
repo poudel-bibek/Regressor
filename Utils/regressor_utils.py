@@ -16,15 +16,15 @@ class DriveDataset(Dataset):
         return [image_idx.astype(np.float32), target_idx.astype(np.float32)]
     
 def prepare_data(directory):
-    train_path = directory + "/train_honda.npz"
-    val_path = directory + "/val_honda.npz"
+    train_path = directory + "/train.npz"
+    val_path = directory + "/val.npz"
 
     print("Loading data....................")
     train = np.load(train_path)
     val = np.load(val_path)
-    print(train['train_images'].shape)
+    print(train['train_input_images'].shape)
 
-    return train['train_images'], train['train_targets'], val['val_images'], val['val_targets'] 
+    return train['train_input_images'], train['train_target_angles'], val['val_input_images'], val['val_target_angles'] 
 
     #one = train['train_images'][0:int(train['train_images'].shape[0]*0.8)]
     #two = train['train_targets'][0:int(train['train_images'].shape[0]*0.8)]

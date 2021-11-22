@@ -1,3 +1,5 @@
 
-#### Started Training ####Ep. 1/1000:	Train: ABL 11.452, Acc. 87.59%	Val: ABL 8.137, Acc. 88.76%, MAE 0.91, MSE 8.223Time: 203.2 s
-#### New Model Saved #####
+#### Started Training ####
+Ep. 1/1:	Train: ABL 7.712, Acc. 81.96%	Val: ABL 7.718, Acc. 92.58%, MAE 1.231, MSE 7.793
+Time: 120.3 s#### New Model Saved #####
+Saving Routine Model#### Ended Training ####
